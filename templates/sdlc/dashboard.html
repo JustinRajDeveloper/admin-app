@@ -5,21 +5,152 @@
 {% block content %}
 <div class="row">
     <div class="col-12">
-        <h1><i class="fas fa-tachometer-alt me-2"></i>SDLC Dashboard</h1>
-        <p class="text-muted">Welcome to the SDLC module</p>
+        <h1><i class="fas fa-code-branch me-2"></i>SDLC Dashboard</h1>
+        <p class="text-muted">Software Development Lifecycle Management</p>
     </div>
 </div>
 
-<div class="row mt-4">
-    <div class="col-12">
+<!-- Quick Stats -->
+<div class="row g-4 mt-3">
+    <div class="col-lg-3 col-md-6">
+        <div class="card border-primary">
+            <div class="card-body text-center">
+                <i class="fas fa-chart-line fa-2x text-primary mb-2"></i>
+                <h5>Release Reports</h5>
+                <p class="text-muted mb-3">Generate comprehensive release analysis</p>
+                <a href="{{ url_for('sdlc.release_reports') }}" class="btn btn-primary">
+                    <i class="fas fa-arrow-right me-1"></i>View Reports
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-3 col-md-6">
+        <div class="card border-info">
+            <div class="card-body text-center">
+                <i class="fas fa-stream fa-2x text-info mb-2"></i>
+                <h5>Pipelines</h5>
+                <p class="text-muted mb-3">CI/CD pipeline monitoring</p>
+                <a href="{{ url_for('sdlc.pipelines') }}" class="btn btn-info">
+                    <i class="fas fa-arrow-right me-1"></i>View Pipelines
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-3 col-md-6">
+        <div class="card border-success">
+            <div class="card-body text-center">
+                <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+                <h5>Code Quality</h5>
+                <p class="text-muted mb-3">Quality metrics and analysis</p>
+                <a href="{{ url_for('sdlc.quality') }}" class="btn btn-success">
+                    <i class="fas fa-arrow-right me-1"></i>View Quality
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-3 col-md-6">
+        <div class="card border-warning">
+            <div class="card-body text-center">
+                <i class="fas fa-rocket fa-2x text-warning mb-2"></i>
+                <h5>Deployments</h5>
+                <p class="text-muted mb-3">Deployment tracking</p>
+                <div class="text-center">
+                    <span class="badge bg-secondary">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Activity -->
+<div class="row mt-5">
+    <div class="col-lg-8">
         <div class="card">
-            <div class="card-body text-center py-5">
-                <i class="fas fa-tools fa-4x text-muted mb-4"></i>
-                <h3>Module Under Development</h3>
-                <p class="text-muted">
-                    The SDLC module features are currently being developed.
-                    Check back soon for new functionality!
-                </p>
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-history me-2"></i>Recent Release Reports
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Report</th>
+                                <th>Branch</th>
+                                <th>Stories</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Release v2.1.0 Report</td>
+                                <td><code>release/v2.1.0</code></td>
+                                <td>15</td>
+                                <td><span class="badge bg-success">Completed</span></td>
+                                <td>
+                                    <a href="{{ url_for('sdlc.release_reports') }}" class="btn btn-sm btn-outline-primary">View</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="text-center text-muted">
+                                    <a href="{{ url_for('sdlc.release_reports') }}" class="text-decoration-none">
+                                        View all reports <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-tachometer-alt me-2"></i>Quick Actions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="{{ url_for('sdlc.generate_release_report') }}" class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>Generate New Report
+                    </a>
+                    <a href="{{ url_for('sdlc.pipelines') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-stream me-2"></i>View Pipelines
+                    </a>
+                    <a href="{{ url_for('sdlc.quality') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-chart-bar me-2"></i>Quality Metrics
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-info-circle me-2"></i>System Status
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span>Git Integration</span>
+                    <span class="badge bg-success">Online</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span>SonarQube</span>
+                    <span class="badge bg-warning">Check Config</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span>Veracode</span>
+                    <span class="badge bg-warning">Check Config</span>
+                </div>
             </div>
         </div>
     </div>
