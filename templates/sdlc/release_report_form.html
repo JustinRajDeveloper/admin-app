@@ -19,15 +19,25 @@
     <div class="col-lg-8">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title mb-0">Report Configuration</h5>
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-download me-2"></i>Auto-Clone Configuration
+                </h5>
+                <small class="text-muted">Repository will be automatically cloned to a temporary location</small>
             </div>
             <div class="card-body">
                 <form method="POST">
                     <div class="row g-3">
                         <div class="col-12">
-                            <label for="git_repo_path" class="form-label">Git Repository Path</label>
-                            <input type="text" class="form-control" id="git_repo_path" name="git_repo_path" 
-                                   placeholder="/path/to/your/git/repository" required>
+                            <label for="repo_url" class="form-label">
+                                <i class="fab fa-git-alt me-1"></i>Git Repository URL
+                            </label>
+                            <input type="text" class="form-control" id="repo_url" name="repo_url" 
+                                   placeholder="https://github.com/yourcompany/yourproject.git" required>
+                            <div class="form-text">
+                                Examples: 
+                                <code>https://github.com/user/repo.git</code> or 
+                                <code>git@github.com:user/repo.git</code>
+                            </div>
                         </div>
                         
                         <div class="col-md-6">
@@ -37,31 +47,66 @@
                                 <option value="main">main</option>
                                 <option value="master">master</option>
                                 <option value="develop">develop</option>
+                                <option value="staging">staging</option>
                             </select>
+                            <div class="form-text">The branch to compare FROM</div>
                         </div>
                         
                         <div class="col-md-6">
                             <label for="target_branch" class="form-label">Target Branch</label>
                             <input type="text" class="form-control" id="target_branch" name="target_branch" 
                                    placeholder="release/v2.1.0" required>
+                            <div class="form-text">The branch to compare TO</div>
                         </div>
                         
                         <div class="col-md-6">
                             <label for="target_version" class="form-label">Target Version</label>
                             <input type="text" class="form-control" id="target_version" name="target_version" 
                                    placeholder="v2.1.0">
+                            <div class="form-text">Optional version identifier</div>
                         </div>
                         
                         <div class="col-md-6">
                             <label for="report_title" class="form-label">Report Title</label>
                             <input type="text" class="form-control" id="report_title" name="report_title" 
                                    placeholder="Release v2.1.0 Summary">
+                            <div class="form-text">Custom title for the report</div>
                         </div>
                     </div>
                     
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h6>Integration Options</h6>
+                            <h6><i class="fas fa-cog me-2"></i>Clone Options</h6>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="clone_depth" class="form-label">Clone Depth</label>
+                                    <select class="form-select" id="clone_depth" name="clone_depth">
+                                        <option value="50">50 commits (fast)</option>
+                                        <option value="100">100 commits (recommended)</option>
+                                        <option value="200">200 commits (thorough)</option>
+                                        <option value="0">Full history (slow)</option>
+                                    </select>
+                                    <div class="form-text">Fewer commits = faster clone</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mt-4">
+                                        <div class="alert alert-info">
+                                            <i class="fas fa-info-circle me-2"></i>
+                                            <strong>Auto-Clone Process:</strong><br>
+                                            1. Repository cloned to temp folder<br>
+                                            2. Analysis performed<br>
+                                            3. Report generated<br>
+                                            4. Temp files cleaned up
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h6><i class="fas fa-plug me-2"></i>Integration Options</h6>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-check">
@@ -88,17 +133,95 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-text mt-2">
+                                <i class="fas fa-exclamation-triangle text-warning me-1"></i>
+                                Integrations require API keys to be configured in system settings
+                            </div>
                         </div>
                     </div>
                     
                     <div class="text-end mt-4">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-play me-1"></i>Generate Report
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-download me-2"></i>Clone & Generate Report
                         </button>
                     </div>
                 </form>
             </div>
         </div>
+        
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-question-circle me-2"></i>Need Help?
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Repository Access</h6>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-1"></i> Public repositories work immediately</li>
+                            <li><i class="fas fa-key text-warning me-1"></i> Private repos need authentication</li>
+                            <li><i class="fas fa-globe text-info me-1"></i> GitHub, GitLab, Bitbucket supported</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Branch Examples</h6>
+                        <ul class="list-unstyled">
+                            <li><code>main</code> → <code>release/v2.1.0</code></li>
+                            <li><code>develop</code> → <code>feature/new-auth</code></li>
+                            <li><code>staging</code> → <code>hotfix/critical-bug</code></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="alert alert-warning mt-3">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Note:</strong> Private repositories require proper authentication. 
+                    Contact your administrator to configure Git credentials for private repo access.
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    const submitBtn = document.querySelector('button[type="submit"]');
+    
+    form.addEventListener('submit', function(e) {
+        // Show loading state
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Cloning & Generating...';
+        
+        // Add progress indicator
+        const progressDiv = document.createElement('div');
+        progressDiv.className = 'alert alert-info mt-3';
+        progressDiv.innerHTML = `
+            <div class="d-flex align-items-center">
+                <div class="spinner-border spinner-border-sm me-3" role="status"></div>
+                <div>
+                    <strong>Processing your request...</strong><br>
+                    <small>This may take 1-3 minutes depending on repository size</small>
+                </div>
+            </div>
+        `;
+        form.appendChild(progressDiv);
+    });
+    
+    // Auto-fill report title based on target branch
+    const targetBranchInput = document.getElementById('target_branch');
+    const reportTitleInput = document.getElementById('report_title');
+    
+    targetBranchInput.addEventListener('blur', function() {
+        if (this.value && !reportTitleInput.value) {
+            const branchName = this.value.replace('/', ' ');
+            reportTitleInput.value = `Release Report: ${branchName}`;
+        }
+    });
+});
+</script>
 {% endblock %}

@@ -104,3 +104,5 @@ coloredlogs==15.0.1
 # Progress bars and CLI enhancements
 tqdm==4.66.1
 rich==13.5.2
+
+GitPython==3.1.37
