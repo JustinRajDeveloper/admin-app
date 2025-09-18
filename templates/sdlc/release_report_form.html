@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Generate Release Report{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h1><i class="fas fa-chart-line me-2"></i>Generate Release Report</h1>
+        <p class="text-muted">Create a comprehensive analysis comparing two Git branches</p>
+    </div>
+    <div class="col-auto">
+        <a href="{{ url_for('sdlc.release_reports') }}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-1"></i>Back to Reports
+        </a>
+    </div>
+</div>
+
+<div class="row mt-4 justify-content-center">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Report Configuration</h5>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label for="git_repo_path" class="form-label">Git Repository Path</label>
+                            <input type="text" class="form-control" id="git_repo_path" name="git_repo_path" 
+                                   placeholder="/path/to/your/git/repository" required>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="base_branch" class="form-label">Base Branch</label>
+                            <select class="form-select" id="base_branch" name="base_branch" required>
+                                <option value="">Select base branch...</option>
+                                <option value="main">main</option>
+                                <option value="master">master</option>
+                                <option value="develop">develop</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="target_branch" class="form-label">Target Branch</label>
+                            <input type="text" class="form-control" id="target_branch" name="target_branch" 
+                                   placeholder="release/v2.1.0" required>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="target_version" class="form-label">Target Version</label>
+                            <input type="text" class="form-control" id="target_version" name="target_version" 
+                                   placeholder="v2.1.0">
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="report_title" class="form-label">Report Title</label>
+                            <input type="text" class="form-control" id="report_title" name="report_title" 
+                                   placeholder="Release v2.1.0 Summary">
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h6>Integration Options</h6>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="enable_ai" name="enable_ai" checked>
+                                        <label class="form-check-label" for="enable_ai">
+                                            AI Analysis
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="enable_sonar" name="enable_sonar" checked>
+                                        <label class="form-check-label" for="enable_sonar">
+                                            SonarQube
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="enable_veracode" name="enable_veracode" checked>
+                                        <label class="form-check-label" for="enable_veracode">
+                                            Veracode
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-end mt-4">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-play me-1"></i>Generate Report
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

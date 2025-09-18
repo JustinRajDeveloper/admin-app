@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1><i class="fas fa-tachometer-alt me-2"></i>Welcome, {{ current_user.first_name }}!</h1>
+        <p class="text-muted">{{ current_user.role.name if current_user.role else 'User' }}</p>
+    </div>
+</div>
+
+<div class="row g-4 mt-3">
+    {% if check_module_access('sdlc') %}
+    <div class="col-lg-3 col-md-6">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-code-branch fa-3x text-primary mb-3"></i>
+                <h5>SDLC</h5>
+                <p class="text-muted">Software Development Lifecycle</p>
+                <a href="{{ url_for('sdlc.dashboard') }}" class="btn btn-primary">Enter Module</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if check_module_access('bsse') %}
+    <div class="col-lg-3 col-md-6">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-building fa-3x text-danger mb-3"></i>
+                <h5>BSSE</h5>
+                <p class="text-muted">Business System Software Engineering</p>
+                <a href="{{ url_for('bsse.dashboard') }}" class="btn btn-danger">Enter Module</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if check_module_access('aia') %}
+    <div class="col-lg-3 col-md-6">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-server fa-3x text-warning mb-3"></i>
+                <h5>AIA</h5>
+                <p class="text-muted">Application Infrastructure & Analytics</p>
+                <a href="{{ url_for('aia.dashboard') }}" class="btn btn-warning">Enter Module</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if check_module_access('dqa') %}
+    <div class="col-lg-3 col-md-6">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-database fa-3x text-info mb-3"></i>
+                <h5>DQA</h5>
+                <p class="text-muted">Data Quality & Analytics</p>
+                <a href="{{ url_for('dqa.dashboard') }}" class="btn btn-info">Enter Module</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% if not (check_module_access('sdlc') or check_module_access('bsse') or check_module_access('aia') or check_module_access('dqa')) %}
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="alert alert-warning text-center">
+            <h4>No Module Access</h4>
+            <p>You don't have access to any modules. Please contact your administrator.</p>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,106 @@
+# Flask Application Requirements
+# Enterprise DevOps Platform
+
+# Core Flask Framework
+Flask==2.3.3
+Flask-SQLAlchemy==3.0.5
+Flask-Login==0.6.3
+Flask-Migrate==4.0.5
+Flask-WTF==1.1.1
+Flask-Mail==0.10.0
+Flask-Caching==2.1.0
+Flask-Limiter==3.5.0
+Flask-CORS==4.0.0
+
+# Forms and Validation
+WTForms==3.0.1
+
+# Database
+SQLAlchemy==2.0.21
+alembic==1.12.0
+
+# Security and Authentication
+Werkzeug==2.3.7
+cryptography==41.0.4
+PyJWT==2.8.0
+
+# HTTP Requests and API Integration
+requests==2.31.0
+urllib3==2.0.4
+
+# Template Engine
+Jinja2==3.1.2
+MarkupSafe==3.0.2
+
+# Date and Time Handling
+python-dateutil==2.8.2
+
+# Environment and Configuration
+python-dotenv==1.0.0
+
+# AI Integration (OpenAI)
+openai==0.28.1
+
+# Data Processing and Analysis
+pandas==2.2.3
+numpy==2.1.0
+
+# Excel and CSV Processing
+openpyxl==3.1.2
+xlsxwriter==3.1.7
+# papaparse==0.2.0
+
+# File Processing
+python-magic==0.4.27
+
+# Caching and Redis
+redis==4.6.0
+
+# Production WSGI Server
+gunicorn==21.2.0
+gevent==24.10.1
+
+# Development and Testing
+pytest==7.4.2
+pytest-flask==1.2.0
+pytest-cov==4.1.0
+watchdog==4.0.2
+
+# Code Quality (Development)
+flake8==6.1.0
+black==23.9.1
+
+# Documentation (Development)
+Sphinx==7.2.6
+
+# Essential System Packages
+# setuptools==68.2.2
+# wheel==0.41.2
+# pip==23.2.1
+
+# Additional utilities
+click==8.1.7
+itsdangerous==2.1.2
+blinker==1.6.2
+
+# Git integration (for release reports)
+GitPython==3.1.37
+
+# JSON Web Tokens
+authlib==1.2.1
+
+# Timezone handling
+pytz==2023.3
+
+# Email validation
+email-validator==2.0.0
+
+# Image processing (if needed for avatars)
+Pillow==10.4.0
+
+# Logging enhancements
+coloredlogs==15.0.1
+
+# Progress bars and CLI enhancements
+tqdm==4.66.1
+rich==13.5.2
